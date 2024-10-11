@@ -1,0 +1,39 @@
+{% extends 'sitemenu/main.html' %}
+{% load static %}
+
+{% block meta_title %}Ошибка!{% endblock %}
+
+{% block page_header %}
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{% static 'images/bg/error_bg.jpg' %}">
+      <div class="container pt-60 pb-40">
+        <!-- Section Content -->
+        <div class="section-content pt-100">
+          <div class="row">
+            <div class="col-md-12">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+
+    <section id="home" class="divider fullscreen bg-lightest">
+      <div class="display-table text-center">
+        <div class="display-table-cell">
+          <div class="container pt-0 pb-0">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <h1 class="font-150 text-theme-colored mt-0 mb-0"><i class="fa fa-map-signs text-gray-silver"></i>404!</h1>
+                <h2 class="mt-0">Ой! А такой страницы нет</h2>
+                <a class="btn btn-border btn-gray btn-transparent btn-circled" href="/">На главную страницу</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}

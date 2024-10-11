@@ -1,0 +1,10 @@
+Django==5.1-rc1
+django-js-asset==1.2.2
+django-mptt==0.9.1
+django-mptt-urls==2.0.3
+django-summernote==0.8.20.0
+mysqlclient==1.4.3
+Pillow==10.0.1
+PyMySQL==0.9.3
+pytz==2018.9
+sqlparse==0.4.4

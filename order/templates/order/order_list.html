@@ -1,0 +1,37 @@
+{% extends 'order_base.html' %}
+
+{% block content %}
+
+            <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Заказы</h3>
+            </div>
+            {% if order_list %}
+            <div class="box-body no-padding">
+              <table class="table table-striped">
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th style="width: 10px">Название заказа</th>
+                  <th style="width: 10px">Дата заказа</th>
+                  <th style="width: 10px">Стоимость</th>
+                  <th style="width: 10px">Статус</th>
+                </tr>
+
+                        {% for order in order_list %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td><a href="/order/details/{{ order.id }}">{{ order }}</a></td>
+                                <td>{{ order.created_date }}</td>
+                                <td>{{ order.total_price|floatformat:2 }} руб</td>
+                                <td>{{ order.get_status_display }}</td>
+                            </tr>
+                        {% endfor %}
+
+
+              </table>
+            </div>
+           {% endif %}
+          </div>
+          <!-- /.box -->
+
+{% endblock %}

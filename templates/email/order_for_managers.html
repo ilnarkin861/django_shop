@@ -1,0 +1,46 @@
+<table>
+
+    <tbody>
+            <tr>
+                <td style="width: 250px"><b>Название заказа:</b></td>
+                <td>{{ order }}</td>
+            </tr>
+            <tr>
+                <td style="width: 250px"><b>Дата заказа:</b></td>
+                <td>{{ order.created_date }}</td>
+            </tr>
+            <tr>
+                <td style="width: 250px"><b>Сумма заказа:</b></td>
+                <td>{{ order.total_price }}</td>
+            </tr>
+            {% if order.note %}
+                <tr>
+                    <td style="width: 200px"><b>Заметки к заказу:</b></td>
+                    <td>{{ order.note }}</td>
+                </tr>
+            {% endif %}
+            <tr>
+                <td style="width: 250px"><b>ФИО клиента:</b></td>
+                <td>{{ order.name}}</td>
+            </tr>
+            <tr>
+                <td style="width: 250px"><b>Электронный адрес клиента:</b></td>
+                <td>{{ order.email}}</td>
+            </tr>
+            <tr>
+                <td style="width: 250px"><b>Телефон клиента:</b></td>
+                <td>{{ order.phone}}</td>
+            </tr>
+            <tr>
+                <td style="width: 200px"><b>Город клиента:</b></td>
+                <td>{{ order.city}}</td>
+            </tr>
+            <tr>
+                <td style="width: 250px"><b>Адрес клиента:</b></td>
+                <td>{{ order.address}}</td>
+            </tr>
+
+
+    </tbody>
+
+</table>

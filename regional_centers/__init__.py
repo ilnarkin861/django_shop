@@ -1,0 +1,1 @@
+default_app_config = 'regional_centers.apps.RegionalCentersConfig'

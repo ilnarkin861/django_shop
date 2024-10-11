@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static mptt_tags humanize %}
+
+{% block meta_title %}{{ category.meta_title|default:category.title }}{% endblock %}
+{% block meta_description %}{{ category.meta_description }}{% endblock %}
+{% block meta_keywords %}{{ category.meta_keywords }}{% endblock %}
+
+{% block page_header %}
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{% static 'images/bg/bg10.jpg' %}">
+      <div class="container pt-60 pb-40">
+        <!-- Section Content -->
+        <div class="section-content pt-100">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="title text-white tnr-font">{{ category.title }}</h3>
+              <ul class="breadcrumb white">
+                <li><a href="/"><i class="fa fa-home"></i></a></li>
+                  <li class="active"><a href="/catalog" class="tnr-font">Каталог</a></li>
+                  {% if category.get_ancestors %}
+                      {% for parent in category.get_ancestors %}
+                          <li><a href="/catalog{{ parent.get_absolute_url }}" class="tnr-font">{{ parent.title }}</a></li>
+                      {% endfor %}
+
+                  {% endif %}
+                  <li class="active tnr-font">{{ category.title }}</li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+{% endblock %}
+
+{% block content %}
+
+
+        <section>
+      <div class="container pb-0">
+        <div class="text-center mb-30">
+          <div class="row">
+            <div class="col-md-12">
+                <h1 class="mt-0 mb-5 tnr-font extra-h1">Продукция серии <span class="text-theme-colored">{{ category.title }}</span></h1>
+                <img src="{{ category.image.url }}" alt="">
+              <div class="font-16 mt-0 color-extra-grey title-normal-style text-justify">{{ category.description|safe }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="row multi-row-clearfix">
+          <div class="col-md-12">
+            <div class="products">
+
+                {% if products %}
+                      {% for product in products %}
+                          {% for category in product.category.all %}
+
+                              <div class="col-sm-6 col-md-6 col-lg-4 mb-30">
+                                  <div class="product pb-0 product-block">
+
+                                    <div class="product-thumb">
+                                      <img alt="" src="{{ product.thumbnail.url }}" class="img-responsive img-fullwidth">
+                                      <div class="overlay">
+                                        {% if product.in_stock %}
+                                            <div class="btn-add-to-cart-wrapper">
+                                              <a class="btn btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="javascript:addCart({{ product.id }}, 1)">В корзину</a>
+                                            </div>
+                                        {% else %}
+                                            <div class="btn-add-to-cart-wrapper">
+                                              <span class="btn btn-theme-colored-red btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700 not-in-stock" >Нет в наличии</span>
+                                            </div>
+                                        {% endif %}
+                                        <div class="btn-product-view-details">
+                                          <a class="btn btn-default btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="/catalog/{{ category.url }}/{{ product.url }}">Подробнее</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="product-details text-center bg-lighter pt-15 pb-10 pl-10 pr-10">
+                                      <div style="height: 100px">
+                                            <a href="/catalog/{{ category.url }}/{{ product.url }}"><h5 class="mt-0 custom-product-title"><b class="tnr-font">{{ product.title }}</b></h5></a>
+                                        </div>
+
+                                      <div class="price"><ins><span class="amount">{{ product.price|floatformat:-2|intcomma }} <span class="rub">Р</span></span></ins></div>
+                                    </div>
+                                  </div>
+                              </div>
+                          {% endfor %}
+                      {% endfor %}
+
+                {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/cart.js' %}"></script>
+
+{% endblock %}

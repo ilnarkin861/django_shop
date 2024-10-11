@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+{% load static humanize %}
+
+
+{% block meta_title %}{{ page.meta_title|default:page.title }}{% endblock %}
+{% block meta_description %}{{ page.meta_description }}{% endblock %}
+{% block meta_keywords %}{{ page.meta_keywords }}{% endblock %}
+
+
+
+{% block page_header %}
+    <div class="swiper-container main-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" style="background:url('{% static "images/bg/bg7.jpg" %}'); background-position:center; background-size:cover">
+              <div class="bg-overlay pb-15">
+
+                  <div class="col-sm-6 col-xs-12 slider-item-block mt-110">
+                      <h2 class="slider-item-title text-center">Жизнь без химии</h2>
+                      <p class="slider-item-desc font-16">Мы предлагаем вам экологически чистую продуцию, которая произведена с применением современных технологий, без использования бытовой химии. Благодаря ей вы можете сделать: дом и автомобиль - безупречно чистыми, кожу лица - здоровым, волосы - шелковистыми, спортивные тренировки - комфортными.</p>
+                      <a class="btn btn-colored btn-lg btn-flat btn-theme-colored pl-20 pr-20 slider-item-link hvr-push" href="/catalog">Купить прямо сейчас</a>
+                  </div>
+
+              </div>
+          </div>
+          <div class="swiper-slide" style="background:url('{% static "images/bg/business_bg.jpg" %}'); background-position:center; background-size:cover">
+              <div class="bg-overlay">
+                  <div class="col-sm-6 col-xs-12 slider-item-block mt-110  mb-15">
+                      <h2 class="slider-item-title text-center">Начать свой бизнес</h2>
+
+                      <p class="slider-item-desc font-16">С нами у вас есть отличная возможность начать свой бизнес, позволяющий достичь высот и успеха. Благодаря тщательно продуманному маркетинговому плану, развивать его будет очень комфортно любому человеку, даже без опыта.</p>
+                      <a class="btn btn-colored btn-lg btn-flat btn-theme-colored pl-20 pr-20 slider-item-link hvr-push" href="/business">Начать прямо сейчас</a>
+                  </div>
+
+              </div>
+          </div>
+
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+
+        <!-- Section: About -->
+    <section>
+      <div class="container">
+        <div class="section-content text-center">
+          <div class="row">
+            <div class="col-md-12">
+              <h1 class="text-uppercase mt-0 tnr-font extra-h1">Кто мы?</h1>
+              <p class="tnr-font color-extra-grey font-18">Мы знимаемся распространением новейших экологичных продуктов, которые помогут сделать жизнь лучше. В линию этих продуктов входит: иструменты для уборки дома, комплексы для ухода за телом и волосами, биологически активные добавки, коллекции чайных напитков и многое другое. Кроме этого, у вас есть уникальный шанс начать с нами собственный бизнес, который с первых же месяцев будет приносить хорошую прибыль, при этом не потребует от вас особых усилий.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="bg-silver-light">
+      <div class="container">
+        <div class="section-content">
+          <div class="row">
+            <div class="col-md-6 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
+              <h3 class="line-bottom mt-0 mt-sm-30 tnr-font">Экологически чистая продукция</h3>
+              <p class="mb-15 color-extra-grey">Для многих не секрет, что бытовая химия наносит колоссальный вред нашему организму и экологии. Ежедневно десятки тысяч тонн химических веществ выбрасываются в атмосферу,
+попадают в реки и океаны, закапываются. Незаметно при ежедневном использовании различных веществ мы рискуем своим здоровьем и здоровьем наших близких людей.</p>
+              <p class="color-extra-grey mb-25">Продукция, которую мы предлагаем, предназначена именно для того, чтобы позволить людям раз и навсегда избавиться от бытовой химии, некачественных продуктов ежедневного использования, но при этом помогать обеспечивать идеальную чистоту, быть здоровыми и экономить. Это значит, что применение таких товаров не будет нести угрозы глобальной экосистеме.</p>
+
+              <a href="/catalog" class="btn btn-theme-colored btn-flat">каталог продукции</a>
+            </div>
+            <div class="col-md-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s">
+              <img class="img-fullwidth mt-sm-40" src="{% static 'images/about/1.png' %}" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="">
+      <div class="container">
+        <div class="section-content">
+          <div class="row">
+            <div class="col-md-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s">
+              <img class="img-fullwidth mt-sm-40" src="{% static 'images/about/money-bg.jpg' %}" alt="">
+            </div>
+            <div class="col-md-6 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
+              <h3 class="line-bottom mt-0 mt-sm-30 tnr-font">Возможность начать свой бизнес</h3>
+              <p class="mb-15 color-extra-grey">Начать свой бизнес - очень легко. Тщательно разработанные маркетинговые решения позволят сделать старт быстрым и эффективным. Быстрое развитие доступно всем без исключения партнерам.</p>
+              <p class="mb-15 color-extra-grey">Стартовый план прост до невозможности. Его сможет понять любой человек. Если вы начнете свой бизнес нового поколения с нами незамедлительно, тогда станете лидером в построении успешного бизнес.</p>
+              <p class="mb-25 color-extra-grey font-16">Наше будущее – в бережном отношении к экологии и жизни.</p>
+              <a href="/business" class="btn btn-theme-colored btn-flat">подробнее</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="container pb-0">
+        <div class="section-title text-center mb-30">
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="text-uppercase mt-0 tnr-font">Что мы предлагаем</h2>
+              <!---<p class="font-16 mt-0">See what new products are available in online shop</p>--->
+            </div>
+          </div>
+        </div>
+        <div class="row multi-row-clearfix">
+          <div class="col-md-12">
+            <div class="products">
+
+                {% if last_products %}
+                      {% for product in last_products %}
+                          {% for category in product.category.all %}
+
+                              <div class="col-sm-6 col-md-6 col-lg-4 mb-30">
+                                  <div class="product pb-0 product-block">
+
+                                    <div class="product-thumb">
+                                      <img alt="" src="{{ product.thumbnail.url }}" class="img-responsive img-fullwidth">
+                                      <div class="overlay">
+                                      {% if product.in_stock %}
+                                            <div class="btn-add-to-cart-wrapper">
+                                              <a class="btn btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="javascript:addCart({{ product.id }}, 1)">В корзину</a>
+                                            </div>
+                                        {% else %}
+                                            <div class="btn-add-to-cart-wrapper">
+                                              <span class="btn btn-theme-colored-red btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700 not-in-stock" >Нет в наличии</span>
+                                            </div>
+                                        {% endif %}
+                                        <div class="btn-product-view-details">
+                                          <a class="btn btn-default btn-theme-colored btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="/catalog/{{ category.url }}/{{ product.url }}">Подробнее</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="product-details text-center bg-lighter pt-15 pb-10 pl-10 pr-10">
+                                        <div style="height: 100px">
+                                            <a href="/catalog/{{ category.url }}/{{ product.url }}"><h5 class="mt-0 custom-product-title"><b class="tnr-font">{{ product.title }}</b></h5></a>
+                                        </div>
+
+                                      <div class="price"><ins><span class="amount">{{ product.price|floatformat:-2|intcomma }} <span class="rub">Р</span></span></ins></div>
+                                    </div>
+                                  </div>
+                              </div>
+                          {% endfor %}
+                      {% endfor %}
+
+                {% endif %}
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <div class="products-more">
+                        <a href="/catalog" class="btn btn-theme-colored">Вся продукция</a>
+                    </div>
+
+                </div>
+                <div class="col-sm-4"></div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="divider">
+      <div class="container">
+          <div class="section-title text-center mb-30">
+              <div class="row">
+                <div class="col-md-12">
+                  <h2 class="mt-0 tnr-font">Есть вопросы?</h2>
+                  <p class="font-16 mt-0 tnr-font title-normal-style color-extra-grey">Задайте их нам</p>
+                </div>
+              </div>
+           </div>
+        <div class="row ">
+          <div class="col-md-12">
+              <form id="contact_form" name="contact_form" class="" action="/form/contact" method="post">
+                    {% csrf_token %}
+                  <div class="row">
+                    <div class="col-sm-12">
+                      {% for field in contact_form %}
+                          <div class="form-group">
+                            <label for="{{ field.field.widget.attrs.id }}">{{ field.label }}{% if field.field.required %} <span style="color: red"> *</span>{% endif %}</label>
+                            {{ field }}
+                          </div>
+                      {% endfor %}
+
+
+                      <div class="form-group">
+
+                        <button type="submit" class="btn btn-dark btn-theme-colored btn-flat mr-5" id="form-action-btn">Отправить</button>
+                        <button type="reset" class="btn btn-default btn-flat btn-theme-colored">Очистить</button>
+                      </div>
+
+                    </div>
+                  </div>
+                 <div id="form-message-block"></div>
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/swiper.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/custom-swiper.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/swiper.min.js' %}"></script>
+<script src="{% static 'js/swiper-init.js' %}"></script>
+<script src="{% static 'js/cart.js' %}"></script>
+{{ contact_form.media.js }}
+
+{% endblock %}

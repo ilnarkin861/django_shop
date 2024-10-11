@@ -1,0 +1,79 @@
+{% extends 'sitemenu/main.html' %}
+{% load static %}
+
+{% block page_header %}
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{% static 'images/bg/contacts_bg.jpg' %}">
+      <div class="container pt-60 pb-40">
+        <!-- Section Content -->
+        <div class="section-content pt-100">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="title text-white tnr-font">{{ page.title }}</h3>
+              <ul class="breadcrumb white">
+                <li><a href="/"><i class="fa fa-home"></i></a></li>
+                <li class="active tnr-font">{{ page.title }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+
+        <!-- Divider: Contact -->
+    <section class="divider">
+      <div class="container">
+        <div class="row pt-10">
+          <div class="col-md-7">
+            <h4 class="mt-0 mb-30 line-bottom">Написать нам</h4>
+            <p class="color-extra-grey">Если у Вас есть вопросы, пожелания или предложения, напишите нам.</p>
+            <!-- Contact Form -->
+                          <form id="contact_form" name="contact_form" class="" action="/form/contact" method="post">
+                    {% csrf_token %}
+                  <div class="row">
+                    <div class="col-sm-12">
+                      {% for field in contact_form %}
+                          <div class="form-group">
+                            <label for="{{ field.field.widget.attrs.id }}">{{ field.label }}{% if field.field.required %} <span style="color: red"> *</span>{% endif %}</label>
+                            {{ field }}
+                          </div>
+                      {% endfor %}
+
+
+                      <div class="form-group">
+
+                        <button type="submit" class="btn btn-dark btn-theme-colored btn-flat mr-5" id="form-action-btn">Отправить</button>
+                        <button type="reset" class="btn btn-default btn-flat btn-theme-colored">Очистить</button>
+                      </div>
+
+                    </div>
+                  </div>
+                 <div id="form-message-block"></div>
+            </form>
+
+
+          </div>
+          <div class="col-md-4 col-md-offset-1">
+            <div class="contact-info text-center pt-40 pb-40 mt-10 bg-light border-bottom border-theme-colored">
+              <i class="fa fa-phone font-36 mb-10 text-theme-colored"></i>
+              <h4>Телефон</h4>
+              <h6 class="text-gray">+7 (922) 735-69-30</h6>
+            </div>
+            <div class="contact-info text-center pt-40 pb-40 mt-10 bg-light border-bottom border-theme-colored">
+              <i class="fa fa-envelope font-36 mb-10 text-theme-colored"></i>
+              <h4>Email</h4>
+              <h6 class="text-gray">kalguyak@bk.ru</h6>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
+
+{% block extra_js %}
+    {{ contact_form.media.js }}
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static humanize%}
+
+{% block meta_title %}{{ product.meta_title|default:product.title }}{% endblock %}
+{% block meta_description %}{{ product.meta_description }}{% endblock %}
+{% block meta_keywords %}{{ product.meta_keywords }}{% endblock %}
+
+{% block page_header %}
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{% static 'images/bg/bg10.jpg' %}">
+      <div class="container pt-60 pb-40">
+        <!-- Section Content -->
+        <div class="section-content pt-100">
+          <div class="row">
+            <div class="col-md-12">
+                <br>
+                <br>
+                <br>
+
+              <ul class="breadcrumb white">
+                <li><a href="/"><i class="fa fa-home"></i></a></li>
+                  <li class="active"><a href="/catalog" class="tnr-font">Каталог</a></li>
+                  {% if product %}
+                      {% for parent in product.category.all %}
+                          <li><a href="/catalog{{ parent.get_absolute_url }}" class="tnr-font">{{ parent.title }}</a></li>
+                      {% endfor %}
+
+                  {% endif %}
+                  <li class="active tnr-font">{{ product.title }}</li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+{% endblock %}
+
+{% block content %}
+
+    <section>
+      <div class="container">
+        <div class="section-content">
+          <div class="row">
+            <div class="product">
+              <div class="col-md-5">
+                <div class="product-image">
+                  <div class="zoom-gallery">
+                      {% if images %}
+                          {% for image in images %}
+                              {% if image.is_main_image %}
+                                <a href="{{ image.image.url }}" title=""><img src="{{ image.image.url }}" alt="" ></a>
+                              {% endif %}
+                          {% endfor %}
+                      {% endif %}
+                  </div>
+                    {% if images and images|length > 1%}
+                        <div class="clearfix">
+                        {% for image in images %}
+                            <div class="col-sm-3 col-xs-4 product-summary-thumb pl-0 mt-20">
+                                <img src="{{ image.image.url }}" alt="" {% if image.is_main_image %}class="product-summary-thumb-active"{% endif %}>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="product-summary">
+                  <h2 class="product-title tnr-font">{{ product.title }}</h2>
+
+                  <div class="price product-summary-price mb-30"> <ins><span class="amount">{{ product.price|floatformat:-2|intcomma }} <span class="rub">Р</span></span></ins> </div>
+                    <p class="tnr-font color-extra-grey"><b>В наличии: </b>{% if product.in_stock %}<span class="success-message">Да</span>{% else %}<span class="error-message">Нет</span>{% endif %}</p>
+                    <h4 class="line-bottom mt-0 mb-10 tnr-font">Краткое описание</h4>
+                  {% if product.short_description|safe %}
+                    <div class="short-description color-extra-grey">
+                    {{ product.short_description|safe }}
+                  </div>
+                    {% endif %}
+                    {% if product.in_stock %}
+                      <div class="cart-form-wrapper mt-30">
+                        <form action="" method="get" class="cart" id="cart-form">
+
+                          <input type="hidden" name="product_id" value="{{ product.id }}">
+                          <table class="table variations no-border">
+                            <tbody>
+
+                              <tr>
+                                <td class="name">Количество</td>
+                                <td class="value">
+                                  <div class="quantity buttons_added">
+                                    <input type="button" class="minus" value="-">
+                                    <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                                    <input type="button" class="plus" value="+">
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <button class="single_add_to_cart_button btn btn-theme-colored" type="submit">В корзину</button>
+                        </form>
+                      </div>
+                    {% endif %}
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="horizontal-tab product-tab">
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab1" data-toggle="tab">Описание</a></li>
+
+                  </ul>
+                  <div class="tab-content">
+                    <div class="tab-pane fade in active color-extra-grey" id="tab1">
+                      <h3>Подробное писание</h3>
+                      <p>{{ product.description|safe }}</p>
+
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/cart.js' %}"></script>
+<script src="{% static 'js/product.js' %}"></script>
+
+{% endblock %}

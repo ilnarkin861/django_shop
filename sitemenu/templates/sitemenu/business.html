@@ -1,0 +1,74 @@
+{% extends 'sitemenu/main.html' %}
+{% load static %}
+
+{% block page_header %}
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{% static 'images/bg/business_bg.jpg' %}">
+      <div class="container pt-60 pb-40">
+        <!-- Section Content -->
+        <div class="section-content pt-100">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="title text-white tnr-font">{{ page.title }}</h3>
+              <ul class="breadcrumb white">
+                <li><a href="/"><i class="fa fa-home"></i></a></li>
+                <li class="active tnr-font">{{ page.title }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+{% endblock %}
+
+{% block content %}
+
+    <section>
+      <div class="container">
+        <div class="section-content text-center">
+          <div class="row">
+            <div class="col-md-12">
+              <h1 class="text-uppercase mt-0 tnr-font extra-h1">Станьте нашим партнером!</h1>
+                <img src="{% static 'images/about/greenway_logo_small.jpg' %}" alt="" class="mb-10">
+                <div class="tnr-font color-extra-grey font-16">{{ page.description|safe }}</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <section>
+      <div class="container">
+        <div class="row">
+
+            <h2 class="text-uppercase mt-0 tnr-font text-center extra-h1 text-theme-colored">Мы ждем вас в свою команду успешных людей!</h2>
+            <p class="tnr-font color-extra-grey text-center font-14">Просто оставьте свой номер телефона. На него мы отправим ссылку для регистрации.</p>
+          <div class="col-md-6 col-md-offset-3">
+
+            <form id="reg-form" action="/form/registration" method="post">
+              {% csrf_token %}
+              <div class="input-group">
+                 {% for field in reg_form %}
+                    {{ field }}
+                  {% endfor %}
+                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-colored btn-dark btn-lg m-0" data-height="45px" id="form-action-btn">Получить ссылку</button>
+                </span>
+              </div>
+            <div id="form-message-block"></div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
+
+{% block extra_js %}
+
+    {{ reg_form.media.js }}
+
+{% endblock %}
